@@ -4,7 +4,7 @@
  * ----------------------------
  *  Created on: Nov 28, 2025
  *     Author: Brian Reeder
- * 
+ *
  *  Contact:
  *   brianreeder124@gmail.com
  *   brian-reeder-1 (GitHub)
@@ -21,15 +21,14 @@
 #include <driverlib/interrupt.h>
 #include <driverlib/adc.h>
 
-
 // RAS reading states
-typedef struct {
-    uint32_t raw_data;          // the raw reading from the ADC connected to the RAS
-    uint32_t new_BPM;           // new BPM computed based on the RAS reading
+typedef struct
+{
+    uint32_t raw_data; // the raw reading from the ADC connected to the RAS
+    uint32_t new_BPM;  // new BPM computed based on the RAS reading
 } TempSensorState;
 
-TempSensorState rotary_angle_sensor;    // struct object for runtime processes
-
+TempSensorState rotary_angle_sensor; // struct object for runtime processes
 
 /*
  * Initialize ADC to use the external RAS
@@ -61,7 +60,6 @@ void RASInit()
     ADCSequenceEnable(ADC0_BASE, 1 /* sequencer */);
 }
 
-
 /*
  * The ISR function: Read the data, mark data ready flag, and
  * schedule the callback event
@@ -78,7 +76,6 @@ void RotaryAngleSensorISR()
     ADCIntClear(ADC0_BASE, 1 /* sequencer */);
 }
 
-
 /*
  * Trigger RAS reading
  */
@@ -87,7 +84,6 @@ void RASTriggerReading()
     // Trigger the sampling
     ADCProcessorTrigger(ADC0_BASE, 1 /* sequencer */);
 }
-
 
 /*
  * Returns the new BPM that was computed during the previous manual trigger and ISR

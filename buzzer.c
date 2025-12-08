@@ -4,7 +4,7 @@
  * ----------------------------
  *  Created on: Nov 24, 2025
  *     Author: Brian Reeder
- *     
+ *
  *  Contact:
  *   brianreeder124@gmail.com
  *   brian-reeder-1 (GitHub)
@@ -23,22 +23,20 @@
 #include <driverlib/pin_map.h>
 #include <driverlib/timer.h>
 
-
 // array of floats to store frequencies.
 // inner menu, case 1, rotates through these frequencies.
 float freq[6] =
-{
-    // frequency values for each note, in Hz
-    {4186.01},  // C8
-    {4300.01},  // C8 + 200 Hz
+    {
+        // frequency values for each note, in Hz
+        {4186.01}, // C8
+        {4300.01}, // C8 + 200 Hz
 
-    {4698.64},  // D8
-    {4898.64},  // D8 + 200 Hz
+        {4698.64}, // D8
+        {4898.64}, // D8 + 200 Hz
 
-    {5587.65},  // F8
-    {5787.65},  // F8 + 200 Hz
+        {5587.65}, // F8
+        {5787.65}, // F8 + 200 Hz
 };
-
 
 /*
  * Initialize the timer PWM functions connected to the Buzzer.
@@ -71,15 +69,14 @@ void BuzzerInit()
     TimerEnable(WTIMER0_BASE, TIMER_B);
 }
 
-
 void BuzzerSet(int pitch_index, int volume)
 {
     // convert our PWM period into period by dividing our frequency from the clocks period (50 MHz)
     int freq_pulse_period = (50000000 / freq[pitch_index]);
 
     // failsafe in case too large of a volume value was passed
-    if(volume > 30) volume = 30;
-    //else if(volume < 0) volume = 0;
+    if (volume > 30)
+        volume = 30;
 
     // get the pulse width by multiplying our computed pulse period by our duty cycle percent
     // duty cycle is volume/100 -- we multiply that fraction by the period to get the pulse's width
@@ -89,6 +86,3 @@ void BuzzerSet(int pitch_index, int volume)
     TimerLoadSet(WTIMER0_BASE, TIMER_B, freq_pulse_period - 1);
     TimerMatchSet(WTIMER0_BASE, TIMER_B, freq_pulse_width - 1);
 }
-
-
-

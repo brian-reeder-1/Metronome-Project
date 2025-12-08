@@ -4,12 +4,12 @@
  * ----------------------------
  *  Created on: Nov 11, 2025
  *     Author: Brian Reeder
- * 
+ *
  *  Contact:
  *   brianreeder124@gmail.com
  *   brian-reeder-1 (GitHub)
  *
- * 
+ *
  *  Adapted from code by:
  *          Zhao Zhang @ UIC
  * ----------------------------
@@ -24,9 +24,10 @@
 /*
  * The state of the 4-digit 7-segment display
  */
-typedef struct {
-    uint8_t digit[4];           // 4 digits, digit[0] for the right most
-    bool colon_on;              // denotes if the colon is on or off
+typedef struct
+{
+    uint8_t digit[4]; // 4 digits, digit[0] for the right most
+    bool colon_on;    // denotes if the colon is on or off
 } Seg7Display;
 
 /*
