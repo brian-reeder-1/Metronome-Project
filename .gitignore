@@ -1,1 +1,11 @@
-/.DS_Store
+# Ignore CCS project files and Debug/ and targetConfigs/ directories.
+# Ignore the macOS file extension DS_store.
+
+**/.DS_Store
+**/.ccsproject
+**/.cproject
+**/.launches/
+**/.project
+**/.settings/
+**/Debug/
+**/targetConfigs/
