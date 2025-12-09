@@ -14,7 +14,7 @@
 <br>
 
 ---
-## Description
+## Description and Structure
 
 - The metronome sequence leverages event-driven programming to dynamically update a buzzer and seven segment display. The metronome's menu can be navigated using the LaunchPad's push buttons, allowing for real time selection of time signatures and buzzer frequencies. 
 
